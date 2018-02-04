@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"> 
+
+       <!-- 配置对象 -->
+       <bean id="user" class="com.test.ioc.User"></bean>
+       <bean id="useraop" class="com.test.aop.UserAop"></bean>
+       
+       <!-- 配置aop操作 -->
+       <aop:config>
+           <!-- 1.配置切入点：被增强的方法 -->
+           <aop:pointcut expression="execution(* com.test.ioc.User.*(..))" id="pointcut1"/>
+           <!-- 2.配置切面：把增强用在相应方法上 -->
+           <aop:aspect ref="useraop">
+           <!-- 配置增强的类型
+           method，增强类里面使用那个方法作为前置 -->
+           <aop:before method="beforeaop" pointcut-ref="pointcut1"/>
+           <aop:after method="afteraop" pointcut-ref="pointcut1"/>
+           <aop:around method="aroundaop" pointcut-ref="pointcut1"/>
+           </aop:aspect>
+       </aop:config>
+</beans>

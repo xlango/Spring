@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+      <!-- ioc -->
+     <!--  <bean id="user" class="com.test.ioc.User"></bean> -->
+     
+     
+     <!--   开启注解的扫描 -->
+     <!-- 扫描类、方法、属性上面是否有注解 -->
+     <context:component-scan base-package="com.test.ioc"></context:component-scan>
+        
+     <!-- 只会扫描属性上面的注解 -->
+     <!-- <context:annotation-config></context:annotation-config> -->
+</beans>
